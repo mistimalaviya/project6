@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24-Hour Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: black;
+        }
+
+        .clock {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+
+        .part {
+            width: 500px;
+            height: 500px;
+           /* border: 1px solid white; */
+            position: absolute;
+            margin-left: 500px;
+            margin-top: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          
+            color: white;
+            box-shadow: 0 0 50PX #0ef;
+           
+
+           
+        }
+        .part:hover{
+            animation: animate 1s linear infinite;
+         transform: rotatex(360deg);
+            
+        }
+        .section{
+           
+         font-size: 50px;
+
+        }
+@keyframes animate{
+    100%{
+        filter: hue-rotate(360deg);
+        transform: rotatex(360deg);
+       
+    }
+}
+
+       
+
+      
+    </style>
+</head>
+
+<div class="part">
+
+    <div class="section">
+        <span id="hour">00</span>
+        <span id="min">00</span>
+        <span id="second">00</span>
+    </div>
+
+    <div class="part1">
+        <button onclick="start()" style="border-radius: 20px;background-color: transparent;color: white;">start clock</button>
+        <button onclick="stop()" style="border-radius:20px ;background-color: transparent;color: white;">stop clock</button>
+    </div>
+</div>
+
+<body>
+  
+    <script>
+       var a;
+
+       function start(){
+
+        let hour=document.getElementById("hour");
+        let min=document.getElementById("min");
+        let second=document.getElementById("second");
+
+        a=setInterval(() => {
+            let countTime = new Date();
+            hour.innerHTML=countTime.getHours();
+            min.innerHTML=countTime.getMinutes();
+            second.innerHTML=countTime.getSeconds();
+            
+        },1000)
+        
+
+       }
+      function stop(){
+        clearInterval(a)
+      }      
+
+
+
+    </script>
+
+</body>
+
+</html>
